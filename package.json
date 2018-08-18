@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/AlyciaHathaway/Dolores-gulu/issues"
   },
-  "homepage": "https://github.com/AlyciaHathaway/Dolores-gulu#readme"
+  "homepage": "https://github.com/AlyciaHathaway/Dolores-gulu#readme",
+  "dependencies": {
+    "vue": "^2.5.17"
+  }
 }
