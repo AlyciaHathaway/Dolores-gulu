@@ -20,7 +20,7 @@
 			--border-radius: 4px;
 			--color: #999;
 			--border-color: #999;
-			--border-color-hover: #666;
+			--border-color-hover: red;
 		}
 		
 		#app {
@@ -41,16 +41,19 @@
 	<g-button v-bind:loading="loading1" v-on:click="loading1 = !loading1">
 		轱辘
 	</g-button>
-	<g-button icon="settings" v-bind:loading="loading2" v-on:click="loading2 = !loading2">
+	<g-button icon="setting" v-bind:loading="loading2" v-on:click="loading2 = !loading2">
 		轱辘
 	</g-button>
 	<g-button icon="setting" icon-position="right" v-bind:loading="loading3" v-on:click="loading3 = !loading3">
 		轱辘
 	</g-button>
-	
+	<g-button-group>
+		<g-button icon="left">上一页</g-button>
+		<g-button icon="right" icon-position="right">下一页</g-button>
+	</g-button-group>
 	<g-icon name="download"></g-icon>
 </div>
 <script src="./src/app.js"></script>
-<script src="//at.alicdn.com/t/font_814127_53xvy7sk0k.js"></script>
+<script src="//at.alicdn.com/t/font_814127_1muqat4rr4l.js"></script>
 </body>
 </html>
