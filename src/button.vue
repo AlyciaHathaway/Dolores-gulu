@@ -1,7 +1,8 @@
 <template>
-	<button class="g-button" v-bind:class="{[`icon-${iconPosition}`]: true}">
-		<g-icon class="icon" v-if="icon" v-bind:name="icon"></g-icon>
-		<g-icon class="loading" name="loading"></g-icon>
+	<!-- 模板里写东西不需要加 this -->
+	<button class="g-button" v-bind:class="{[`icon-${iconPosition}`]: true}" v-on:click="$emit('click')">
+		<g-icon class="icon" v-if="icon && !loading" v-bind:name="icon"></g-icon>
+		<g-icon class="loading icon" v-if="loading" name="loading"></g-icon>
 		<div class="content">
 			<slot></slot>
 		</div>
@@ -13,6 +14,10 @@
 		// props: ['icon', 'iconPosition']
 		props: {
 			icon: {},
+			loading: {
+				type: Boolean,
+				default: false
+			},
 			iconPosition: {
 				type: String,
 				default: 'left',
