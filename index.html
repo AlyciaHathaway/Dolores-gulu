@@ -30,6 +30,10 @@
 		body {
 			font-size: var(--font-size);
 		}
+		
+		.box {
+			margin: 20px;
+		}
 	</style>
 	
 	<style>
@@ -38,21 +42,32 @@
 </head>
 <body>
 <div id="app">
-	<g-button :loading="loading1" @click="loading1 = !loading1">
-		轱辘
-	</g-button>
-	<g-button icon="setting" :loading="loading2" @click="loading2 = !loading2">
-		轱辘
-	</g-button>
-	<g-button icon="setting" icon-position="right" :loading="loading3" @click="loading3 = !loading3">
-		轱辘
-	</g-button>
-	<g-button-group>
-		<g-button icon="left">上一页</g-button>
-		<g-button icon="right" icon-position="right">下一页</g-button>
-	</g-button-group>
-	<g-icon name="download"></g-icon>
-	<div id="test"></div>
+	<div class="box">
+		<g-input value="Dolores" disabled></g-input>
+		<g-input value="xa" readonly></g-input>
+		<g-input></g-input>
+	</div>
+	
+	<div class="box">
+		<g-input value="Jason" error="姓名不能多于5个字"></g-input>
+	</div>
+	
+	<div class="box">
+		<g-button :loading="loading1" @click="loading1 = !loading1">
+			轱辘
+		</g-button>
+		<g-button icon="setting" :loading="loading2" @click="loading2 = !loading2">
+			轱辘
+		</g-button>
+		<g-button icon="setting" icon-position="right" :loading="loading3" @click="loading3 = !loading3">
+			轱辘
+		</g-button>
+		<g-button-group>
+			<g-button icon="left">上一页</g-button>
+			<g-button icon="right" icon-position="right">下一页</g-button>
+		</g-button-group>
+		<g-icon name="download"></g-icon>
+	</div>
 </div>
 <script src="./src/app.js"></script>
 </body>
