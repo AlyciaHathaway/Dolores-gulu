@@ -5,6 +5,13 @@ import Input from '../src/input'
 Vue.config.productionTip = false
 Vue.config.devtools = false
 
+// describe 和 it 是由 mocha 提供挂在 window 上的全局函数
+// sinon-chai 同时引入 sinon 和 chai
+// sinon.fake 是由 sinon 提供
+// expect 是由 chai 提供
+// calledWith 是由 sinon-chai 提供
+// dispatchEvent 是浏览器的 API 用来触发事件
+
 describe('Input', ()=> {
 	it('存在.', () => {
 		expect(Input).to.exist
