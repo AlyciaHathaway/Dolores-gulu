@@ -1,5 +1,5 @@
 <template>
-	<div class="col" :class="[`col-${span}`]">
+	<div class="col" :class="[`col-${span}`, offset && `offset-${offset}`]">
 		<slot></slot>
 	</div>
 </template>
@@ -9,6 +9,9 @@
 		name: 'GuluCol',
 		props: {
 			span: {
+				type: [Number, String]
+			},
+			offset: {
 				type: [Number, String]
 			}
 		}
@@ -22,10 +25,17 @@
 		border: 1px solid red;
 		background: #ccc;
 		
-		$class: col-;
+		$class-prefix: col-;
 		@for $n from 1 through 24 {
-			&.#{$class}#{$n} {
+			&.#{$class-prefix}#{$n} {
 				width: ($n / 24) * 100%;
+			}
+		}
+		
+		$class-prefix: offset-;
+		@for $n from 1 through 24 {
+			&.#{$class-prefix}#{$n} {
+				margin-left: ($n / 24) * 100%;
 			}
 		}
 	}
