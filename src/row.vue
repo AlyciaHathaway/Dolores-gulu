@@ -48,6 +48,7 @@
 	.row {
 		display: flex;
 		flex-wrap: wrap;
+		border: 1px solid red;
 		&.align-left {
 			justify-content: flex-start;
 		}
