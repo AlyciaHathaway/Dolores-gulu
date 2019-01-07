@@ -24,63 +24,33 @@
 		}
 		
 		#app {
-			margin: 20px;
+		
 		}
 		
 		body {
 			font-size: var(--font-size);
 		}
 		
-		.box {
-			margin: 20px;
-		}
 	</style>
 </head>
 <body>
+	<style>
+		.demo {
+			border: 1px solid #ccc;
+			min-height: 100px;
+		}
+	</style>
 
-<div id="app">
-	<g-row>
-		<g-col span="18" offset="1" :narrow-pc="{span: 12, offset: 12}"></g-col>
-	</g-row>
-	
-	
-	<div class="box">
-		<g-input value="Dolores" disabled></g-input>
-		<g-input value="xa" readonly></g-input>
-		<g-input></g-input>
+	<div id="app">
+		<g-layout style="height: 100vh">
+			<g-header class="demo">header</g-header>
+			<g-layout>
+				<g-aside class="demo">sider</g-aside>
+				<g-content class="demo">content</g-content>
+			</g-layout>
+			<g-footer class="demo">footer</g-footer>
+		</g-layout>
 	</div>
-	
-	<div class="box">
-		<g-input value="Jason" error="姓名不能多于5个字"></g-input>
-	</div>
-	
-	<div class="box">
-		<g-input value="Jason" @change="inputChange"></g-input>
-	</div>
-	
-	<div class="box">
-		<g-input v-model="message"></g-input>
-		<p>{{message}}</p>
-		<button @click="message += 1">加一</button>
-	</div>
-	
-	<div class="box">
-		<g-button :loading="loading1" @click="loading1 = !loading1">
-			轱辘
-		</g-button>
-		<g-button icon="setting" :loading="loading2" @click="loading2 = !loading2">
-			轱辘
-		</g-button>
-		<g-button icon="setting" icon-position="right" :loading="loading3" @click="loading3 = !loading3">
-			轱辘
-		</g-button>
-		<g-button-group>
-			<g-button icon="left">上一页</g-button>
-			<g-button icon="right" icon-position="right">下一页</g-button>
-		</g-button-group>
-		<g-icon name="download"></g-icon>
-	</div>
-</div>
-<script src="./src/app.js"></script>
+	<script src="./src/app.js"></script>
 </body>
 </html>
