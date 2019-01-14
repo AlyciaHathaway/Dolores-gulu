@@ -36,7 +36,15 @@ new Vue({
 	    message: '双向绑定'
     },
 	created() {
-	
+		this.$toast('我是 toast', {
+			closeButton: {
+				text: '知道了',
+				callback(toast) {
+					toast.log()
+					console.log('用户说它知道了')
+				}
+			}
+		})
 	},
 	methods: {
     	inputChange(xxx, yyy) {
@@ -44,7 +52,7 @@ new Vue({
 		    console.log(yyy)
 	    },
 		showToast() {
-    		this.$toast('我是 toast')
+			this.$toast('我是 toast')
 		}
 	}
 })
