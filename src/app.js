@@ -36,18 +36,7 @@ new Vue({
 	    message: '双向绑定'
     },
 	created() {
-		this.$toast('你的智商需要充值！', {
-			position: 'middle',
-			closeButton: {
-				text: '已充值',
-				callback() {
-					console.log('他说已经充值智商了')
-				}
-			},
-			enableHTML: false,
-			autoClose: true,
-			autoCloseDelay: 3
-		})
+	
 	},
 	methods: {
     	inputChange(xxx, yyy) {
@@ -55,7 +44,18 @@ new Vue({
 		    console.log(yyy)
 	    },
 		showToast() {
-		
+			this.$toast(`目前的智商为${parseInt(Math.random() * 100)}你的智商需要充值！`, {
+				position: 'middle',
+				closeButton: {
+					text: '已充值',
+					callback() {
+						console.log('他说已经充值智商了')
+					}
+				},
+				enableHTML: false,
+				autoClose: true,
+				autoCloseDelay: 3
+			})
 		}
 	}
 })
