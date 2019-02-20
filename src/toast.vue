@@ -22,7 +22,7 @@
 			autoClose: {
 				// autoClose 和延时合并
 				type: [Boolean, Number],
-				default: true,
+				default: 5,
 				validator(value) {
 					return value === false || typeof value === 'number'
 				}
