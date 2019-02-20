@@ -53,8 +53,7 @@ new Vue({
 					}
 				},
 				enableHTML: false,
-				autoClose: true,
-				autoCloseDelay: 3
+				autoClose: 3
 			})
 		}
 	}
