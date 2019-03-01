@@ -32,6 +32,8 @@
 		},
 		provide() {
 			return {
+				// 如果一个对象能够 $emit触发一个事件、$on监听一个事件、$off取消监听一个事件，它就是一个 eventBus 事件中心
+				// 借助 new Vue() 的接口，它的行为完全符合事件中心
 				eventBus: this.eventBus
 			}
 		}

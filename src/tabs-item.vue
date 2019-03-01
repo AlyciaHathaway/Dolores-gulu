@@ -19,12 +19,14 @@
 			}
 		},
 		created() {
+			// $on 监听一个事件
 			this.eventBus.$on('update:selected', (name)=> {
 				console.log(name)
 			})
 		},
 		methods: {
 			xxx() {
+				// $emit 触发一个事件
 				this.eventBus.$emit('update:selected', this.name)
 			}
 		}
