@@ -12,9 +12,11 @@
 	export default {
 		name: 'GuluTabsHead',
 		inject: ['eventBus'],
-		created() {
+		mounted() {
 			this.eventBus.$on('update:selected', (item, vm)=> {
-				console.log(item, vm)
+				let {width, height, top, left} = vm.$el.getBoundingClientRect()
+				this.$refs.line.style.width = `${width}px`
+				this.$refs.line.style.left = `${left}px`
 			})
 		}
 	}
@@ -32,8 +34,8 @@
 		> .line {
 			position: absolute;
 			bottom: 0;
-			width: 4em;
 			border-bottom: 1px solid $blue;
+			transition: all .35s;
 		}
 		> .actions-wrapper {
 			margin-left: auto;

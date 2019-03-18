@@ -33,10 +33,10 @@
 		mounted() {
 			this.$children.map((vm)=> {
 				if (vm.$options.name === 'GuluTabsHead') {
-					vm.$children.map((item)=> {
-						if (item.$options.name === 'GuluTabsItem' && item.name === this.selected) {
-							console.log(item.$el)
-							this.eventBus.$emit('update:selected', this.selected, item)
+					vm.$children.map((childVM)=> {
+						if (childVM.$options.name === 'GuluTabsItem' && childVM.name === this.selected) {
+							console.log(childVM.$el)
+							this.eventBus.$emit('update:selected', this.selected, childVM)
 						}
 					})
 				}
