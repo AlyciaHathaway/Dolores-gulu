@@ -39,23 +39,24 @@
 		methods: {
 			xxx() {
 				// $emit 触发一个事件
-				this.eventBus.$emit('update:selected', this.name)
+				this.eventBus.$emit('update:selected', this.name, this)
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	$blue: #409eff;
 	.tabs-item {
 		flex-shrink: 0;
 		display: flex;
 		align-items: center;
 		height: 100%;
 		padding: 0 1em;
-		border: 1px solid green;
 		cursor: pointer;
 		&.active {
-			background: red;
+			color: $blue;
+			font-weight: bold;
 		}
 	}
 </style>
