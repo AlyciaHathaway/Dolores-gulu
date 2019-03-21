@@ -31,11 +31,15 @@
 			// this.$emit('update:selected', 'xxx')
 		},
 		mounted() {
+			// $children 只能获取到子组件，不能获取到子元素
+			if (this.$children.length === 0) {
+				console && console.warn &&
+				console.warn('tabs 的子组件应该是 tabs-head 和 tabs-body, 但你没有写子组件')
+			}
 			this.$children.map((vm)=> {
 				if (vm.$options.name === 'GuluTabsHead') {
 					vm.$children.map((childVM)=> {
 						if (childVM.$options.name === 'GuluTabsItem' && childVM.name === this.selected) {
-							console.log(childVM.$el)
 							this.eventBus.$emit('update:selected', this.selected, childVM)
 						}
 					})
