@@ -19,5 +19,35 @@ describe('Tabs', ()=> {
 		expect(Tabs).to.exist
 	})
 	
+	it('接受 selected prop', (done)=> {
+		const div = document.createElement('div')
+		document.body.appendChild(div)
+		div.innerHTML = `
+			<g-tabs selected="finance">
+				<g-tabs-head>
+					<g-tabs-item name="woman">美女</g-tabs-item>
+					<g-tabs-item name="finance">财经</g-tabs-item>
+					<g-tabs-item name="sports">体育</g-tabs-item>
+				</g-tabs-head>
+				<g-tabs-body>
+					<g-tabs-pane name="woman">美女</g-tabs-pane>
+					<g-tabs-pane name="finance">财经</g-tabs-pane>
+					<g-tabs-pane name="sports">体育</g-tabs-pane>
+				</g-tabs-body>
+			</g-tabs>
+		`
+		let vm = new Vue({
+			el: div
+		})
+		vm.$nextTick(()=> {
+			let element = vm.$el.querySelector('.tabs-item[data-name="finance"]')
+			expect(element.classList.contains('active')).to.be.true
+			done()
+		})
+		
+	})
 	
+	it('接受 direction prop', ()=> {
+	
+	})
 })

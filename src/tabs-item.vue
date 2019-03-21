@@ -1,5 +1,5 @@
 <template>
-	<div class="tabs-item" @click="onClick" :class="classes">
+	<div class="tabs-item" @click="onClick" :class="classes" :data-name="name">
 		<slot></slot>
 	</div>
 </template>
@@ -33,15 +33,19 @@
 		},
 		created() {
 			// $on 监听一个事件
-			this.eventBus.$on('update:selected', (name)=> {
-				this.active = name === this.name
-			})
+			if (this.eventBus) {
+				this.eventBus.$on('update:selected', (name)=> {
+					this.active = name === this.name
+				})
+			}
 		},
 		methods: {
 			onClick() {
 				if (this.disabled) { return }
 				// $emit 触发一个事件
-				this.eventBus.$emit('update:selected', this.name, this)
+				this.eventBus && this.eventBus.$emit('update:selected', this.name, this)
+				// 方便测试代码触发事件
+				this.$emit('click', this)
 			}
 		}
 	}
