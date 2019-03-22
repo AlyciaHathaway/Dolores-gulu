@@ -1,12 +1,11 @@
 <template>
-	<div class="popover" @click="onClick">
+	<div class="popover" @click="onClick" ref="popover">
 		<div class="content-wrapper" ref="contentWrapper" v-if="visible">
 			<slot name="content"></slot>
 		</div>
 		<span ref="triggerWrapper">
 			<slot></slot>
 		</span>
-		
 	</div>
 </template>
 
@@ -26,23 +25,32 @@
 				this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
 				this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
 			},
-			listenToDocument() {
-				let eventHandler = (event)=> {
-					if (!this.$refs.contentWrapper.contains(event.target)) {
-						this.visible = false
-						document.removeEventListener('click', eventHandler)
-					}
+			onClickDocument(event) {
+				if (this.$refs.popover === event.target || this.$refs.popover.contains(event.target)) {
+					return
 				}
-				document.addEventListener('click', eventHandler)
+				if (this.$refs.contentWrapper === event.target || this.$refs.contentWrapper.contains(event.target)) {
+					return
+				}
+				this.close()
+			},
+			open() {
+				this.visible = true
+				this.$nextTick(() => {
+					this.positionContent()
+					document.addEventListener('click', this.onClickDocument)
+				})
+			},
+			close() {
+				this.visible = false
+				document.removeEventListener('click', this.onClickDocument)
 			},
 			onClick(event) {
 				if (this.$refs.triggerWrapper.contains(event.target)) {
-					this.visible = !this.visible
 					if (this.visible === true) {
-						this.$nextTick(() => {
-							this.positionContent()
-							this.listenToDocument()
-						})
+						this.close()
+					}else {
+						this.open()
 					}
 				}
 			}
